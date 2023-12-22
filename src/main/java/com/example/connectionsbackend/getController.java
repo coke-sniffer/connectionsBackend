@@ -23,7 +23,7 @@ public class getController {
         driver.quit();
     }
 
-    @GetMapping("/data")
+    @GetMapping("/dailypuzzle")
     public String getData() {
         return Arrays.toString(data);
     }
