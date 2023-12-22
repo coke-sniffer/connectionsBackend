@@ -15,7 +15,7 @@ import java.util.Arrays;
 public class getController {
     public static String[] data;
     static {
-        System.setProperty("webdriver.chrome.driver","src/resources/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver","src/main/resources/chromedriver.exe");
         WebDriver driver = new ChromeDriver(new ChromeOptions().addArguments("--remote-allow-origins=*","--headless","--disable-gpu","--window-size=1,1"));
         driver.navigate().to("https://www.nytimes.com/games/connections");
 
