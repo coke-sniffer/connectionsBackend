@@ -46,7 +46,12 @@ public class ConnectionsBackendApplication {
     private static TimerTask timerTask = new TimerTask() {
         @Override
         public void run() {
-            WebDriver driver = new ChromeDriver(new ChromeOptions().addArguments("--remote-allow-origins=*","--headless","--disable-gpu","--window-size=1,1"));
+            WebDriver driver = new ChromeDriver(new ChromeOptions().addArguments("--remote-allow-origins=*",
+                                                                                 "--headless=new",
+                                                                                 "--disable-gpu",
+                                                                                 "--remote-debugging-port=8080",
+                                                                                 "--disable-gpu"
+                                                                                ));
             driver.navigate().to("https://www.nytimes.com/games/connections");
 
             ConnectionsBackendApplication.data = java.util.regex.Pattern.compile("(>[A-Z]{1,10}<)").matcher(driver.findElement(By.id("board")).getAttribute("innerHTML")).results().map(mr->mr.group().substring(1,mr.group().length()-1)).toArray(String[]::new);
