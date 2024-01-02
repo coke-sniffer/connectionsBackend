@@ -4,13 +4,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.slf4j.ILoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 import java.util.Calendar;
@@ -18,6 +14,12 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
 
+@CrossOrigin(
+        allowCredentials = "true",
+        origins = "*",
+        allowedHeaders = "*",
+        methods = {RequestMethod.GET,RequestMethod.POST,RequestMethod.DELETE,RequestMethod.PUT}
+)
 @RestController
 @RequestMapping("/api/v1")
 @SpringBootApplication
@@ -41,7 +43,7 @@ public class ConnectionsBackendApplication {
         System.out.println("p1 initialized");
     }
 
-    private static TimerTask timerTask = new TimerTask() {
+    private static final TimerTask timerTask = new TimerTask() {
         @Override
         public void run() {
             WebDriver driver = new ChromeDriver(new ChromeOptions().addArguments("--remote-allow-origins=*",
