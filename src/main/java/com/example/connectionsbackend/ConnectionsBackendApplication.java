@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
 
 @CrossOrigin(
         allowCredentials = "true",
-        origins = {"https://blooooopybleep.github.io", "http://localhost:63342"},
+        origins = {"https://blooooopybleep.github.io", "http://localhost:63342","https://play.blooooopybleep.com/connections"},
         allowedHeaders = "*",
         methods = {RequestMethod.GET,RequestMethod.POST,RequestMethod.DELETE,RequestMethod.PUT}
 )
@@ -36,11 +36,17 @@ public class ConnectionsBackendApplication {
     public static String[] data=new String[16];
 
     public static void init() {
-        Calendar refreshDate = Calendar.getInstance();
-        refreshDate.set(0,0,0, 0, 15, 0);
-        Timer timer = new Timer();
-        timer.schedule(timerTask, Math.abs(refreshDate.getTimeInMillis()-System.currentTimeMillis()), TimeUnit.MILLISECONDS.convert(1, TimeUnit.DAYS));
-        System.out.println("p1 initialized");
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.HOUR_OF_DAY, 0);
+        calendar.set(Calendar.MINUTE, 15);
+        calendar.set(Calendar.SECOND, 0);
+        calendar.set(Calendar.MILLISECOND, 0);
+        long delay = calendar.getTimeInMillis() - System.currentTimeMillis();
+        if (delay < 0) {
+            calendar.add(Calendar.DAY_OF_MONTH, 1);
+            delay = calendar.getTimeInMillis() - System.currentTimeMillis();
+        }
+        new Timer().scheduleAtFixedRate(timerTask, delay, TimeUnit.MILLISECONDS.convert(1, TimeUnit.DAYS));
     }
 
     private static final TimerTask timerTask = new TimerTask() {
@@ -54,7 +60,7 @@ public class ConnectionsBackendApplication {
 
             ConnectionsBackendApplication.data = java.util.regex.Pattern.compile("(>[A-Z]{1,10}<)").matcher(driver.findElement(By.id("board")).getAttribute("innerHTML")).results().map(mr->mr.group().substring(1,mr.group().length()-1)).toArray(String[]::new);
             driver.quit();
-            System.out.println("p2 initialized");
+            System.out.println(Arrays.toString(ConnectionsBackendApplication.data) +" retrieved @"+System.currentTimeMillis());
         }
     };
 
