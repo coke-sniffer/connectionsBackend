@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
 
 @CrossOrigin(
         allowCredentials = "true",
-        origins = {"https://blooooopybleep.github.io", "http://localhost:63342","https://play.blooooopybleep.com/connections"},
+        origins = {"https://blooooopybleep.github.io", "http://localhost:63342","https://play.william-duan.games"},
         allowedHeaders = "*",
         methods = {RequestMethod.GET,RequestMethod.POST,RequestMethod.DELETE,RequestMethod.PUT}
 )
