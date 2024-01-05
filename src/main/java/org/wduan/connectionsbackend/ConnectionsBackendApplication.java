@@ -18,6 +18,7 @@ import java.util.concurrent.TimeUnit;
 import org.apache.logging.log4j.LogManager;
 
 @CrossOrigin(
+        allowCredentials = "true",
         origins = "*",
         allowedHeaders = "*",
         methods = {RequestMethod.GET,RequestMethod.POST,RequestMethod.DELETE,RequestMethod.PUT}
