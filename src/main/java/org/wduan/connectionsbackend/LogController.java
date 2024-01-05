@@ -12,12 +12,7 @@ import java.nio.Buffer;
 import java.util.stream.Collectors;
 
 
-@CrossOrigin(
-        allowCredentials = "true",
-        origins = {"https://blooooopybleep.github.io", "http://localhost:63342","https://play.william-duan.games"},
-        allowedHeaders = "*",
-        methods = {RequestMethod.GET,RequestMethod.POST,RequestMethod.DELETE,RequestMethod.PUT}
-)
+@CrossOrigin
 @RestController
 @RequestMapping("/logs")
 public class LogController {

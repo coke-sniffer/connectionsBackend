@@ -17,11 +17,6 @@ import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
 import org.apache.logging.log4j.LogManager;
 
-@CrossOrigin(
-        origins = {"https://blooooopybleep.github.io", "http://localhost","https://play.william-duan.games"},
-        allowedHeaders = "*",
-        methods = {RequestMethod.GET,RequestMethod.POST,RequestMethod.DELETE,RequestMethod.PUT}
-)
 @RestController
 @RequestMapping("/api/v1")
 @SpringBootApplication
@@ -68,7 +63,6 @@ public class ConnectionsBackendApplication {
         }
     };
 
-    @CrossOrigin
     @GetMapping("/dailypuzzle")
     public String getData(HttpServletRequest request) {
         LogController.log("Data requested from ip: "+request.getRemoteAddr()+" @"+System.currentTimeMillis());
