@@ -1,5 +1,7 @@
-package com.example.connectionsbackend;
+package org.wduan.connectionsbackend;
 
+import jakarta.servlet.http.HttpServletRequest;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -13,6 +15,7 @@ import java.util.Calendar;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
+import org.apache.logging.log4j.LogManager;
 
 @CrossOrigin(
         allowCredentials = "true",
@@ -25,15 +28,15 @@ import java.util.concurrent.TimeUnit;
 @SpringBootApplication
 public class ConnectionsBackendApplication {
 
+    public static String[] data=new String[16];
     public static void main(String[] args) {
+        LogController.clearLog();
         SpringApplication.run(ConnectionsBackendApplication.class, args);
-        System.out.println("p0 initialized");
+        LogController.log("p0 initialized");
         timerTask.run();
         init();
     }
 
-
-    public static String[] data=new String[16];
 
     public static void init() {
         Calendar calendar = Calendar.getInstance();
@@ -44,7 +47,8 @@ public class ConnectionsBackendApplication {
         long delay = calendar.getTimeInMillis() - System.currentTimeMillis();
         if (delay < 0) {
             calendar.add(Calendar.DAY_OF_MONTH, 1);
-            delay = calendar.getTimeInMillis() - System.currentTimeMillis();
+            //add 300k ms to compensate for GMT delay
+            delay = calendar.getTimeInMillis() - System.currentTimeMillis() + 300000;
         }
         new Timer().scheduleAtFixedRate(timerTask, delay, TimeUnit.MILLISECONDS.convert(1, TimeUnit.DAYS));
     }
@@ -52,6 +56,7 @@ public class ConnectionsBackendApplication {
     private static final TimerTask timerTask = new TimerTask() {
         @Override
         public void run() {
+            ConnectionsBackendApplication.data = new String[16];
             WebDriver driver = new ChromeDriver(new ChromeOptions().addArguments("--remote-allow-origins=*",
                     "--headless=new",
                     "--disable-gpu",
@@ -60,14 +65,14 @@ public class ConnectionsBackendApplication {
 
             ConnectionsBackendApplication.data = java.util.regex.Pattern.compile("(>[A-Z]{1,10}<)").matcher(driver.findElement(By.id("board")).getAttribute("innerHTML")).results().map(mr->mr.group().substring(1,mr.group().length()-1)).toArray(String[]::new);
             driver.quit();
-            System.out.println(Arrays.toString(ConnectionsBackendApplication.data) +" retrieved @"+System.currentTimeMillis());
+            LogController.log(Arrays.toString(ConnectionsBackendApplication.data) +" retrieved @"+System.currentTimeMillis());
         }
     };
 
     @CrossOrigin
     @GetMapping("/dailypuzzle")
-    public String getData() {
-        System.out.println("Data requested");
+    public String getData(HttpServletRequest request) {
+        LogController.log("Data requested from ip: "+request.getRemoteAddr()+" @"+System.currentTimeMillis());
         return Arrays.toString(ConnectionsBackendApplication.data);
     }
 

@@ -1,0 +1,16 @@
+2024-01-04T23:07:53.787-05:00  INFO 23128 --- [main] o.w.c.ConnectionsBackendApplication      : Starting ConnectionsBackendApplication using Java 20.0.1 with PID 23128 (C:\Users\tmwdn\Documents\23-24_JavaProjects\connectionsBackend\build\classes\java\main started by tmwdn in C:\Users\tmwdn\Documents\23-24_JavaProjects\connectionsBackend)
+2024-01-04T23:07:53.788-05:00  INFO 23128 --- [main] o.w.c.ConnectionsBackendApplication      : No active profile set, falling back to 1 default profile: "default"
+2024-01-04T23:07:54.418-05:00  INFO 23128 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-01-04T23:07:54.426-05:00  INFO 23128 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-01-04T23:07:54.426-05:00  INFO 23128 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.17]
+2024-01-04T23:07:54.467-05:00  INFO 23128 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-01-04T23:07:54.468-05:00  INFO 23128 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 641 ms
+2024-01-04T23:07:54.714-05:00  INFO 23128 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-01-04T23:07:54.720-05:00  INFO 23128 --- [main] o.w.c.ConnectionsBackendApplication      : Started ConnectionsBackendApplication in 1.231 seconds (process running for 1.696)
+2024-01-04T23:07:54.723-05:00  INFO 23128 --- [main] o.w.connectionsbackend.LogController     : p0 initialized
+2024-01-04T23:07:54.770-05:00  INFO 23128 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-01-04T23:07:54.770-05:00  INFO 23128 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-01-04T23:07:54.771-05:00  INFO 23128 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-01-04T23:07:54.795-05:00  INFO 23128 --- [http-nio-8080-exec-1] o.w.connectionsbackend.LogController     : logs requested from ip: 127.0.0.1
+2024-01-04T23:07:58.217-05:00  INFO 23128 --- [main] o.w.connectionsbackend.LogController     : [MATCH, BOX, CHARM, STRIKE, BOW, DUCK, SICK, SWIPE, FIRE, CARD, BLOCK, TIGHT, BREAK, MESSAGE, LIT, WRAPPING] retrieved @1704427678217
+2024-01-04T23:08:04.645-05:00  INFO 23128 --- [http-nio-8080-exec-3] o.w.connectionsbackend.LogController     : logs requested from ip: 127.0.0.1
