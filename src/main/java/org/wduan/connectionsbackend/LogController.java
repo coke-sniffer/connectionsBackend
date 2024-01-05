@@ -14,12 +14,12 @@ import java.util.stream.Collectors;
 
 @CrossOrigin(
         allowCredentials = "true",
-        origins = "*",
+        origins = {"https://blooooopybleep.github.io", "http://localhost:69696","https://play.william-duan.games"},
         allowedHeaders = "*",
         methods = {RequestMethod.GET,RequestMethod.POST,RequestMethod.DELETE,RequestMethod.PUT}
 )
 @RestController
-@RequestMapping("/logs")
+@RequestMapping("/api/logs")
 public class LogController {
 
     private static final Logger logger = LogManager.getLogger(LogController.class);
