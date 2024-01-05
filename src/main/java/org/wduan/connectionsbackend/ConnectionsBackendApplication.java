@@ -17,6 +17,11 @@ import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
 import org.apache.logging.log4j.LogManager;
 
+@CrossOrigin(
+        origins = "*",
+        allowedHeaders = "*",
+        methods = {RequestMethod.GET,RequestMethod.POST,RequestMethod.DELETE,RequestMethod.PUT}
+)
 @RestController
 @RequestMapping("/api/v1")
 @SpringBootApplication

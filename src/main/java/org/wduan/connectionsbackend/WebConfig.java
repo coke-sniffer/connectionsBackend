@@ -1,3 +1,4 @@
+/*
 package org.wduan.connectionsbackend;
 
 import org.springframework.context.annotation.Configuration;
@@ -13,4 +14,4 @@ public class WebConfig implements WebMvcConfigurer {
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**");
     }
-}
+}*/

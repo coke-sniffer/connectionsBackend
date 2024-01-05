@@ -12,7 +12,11 @@ import java.nio.Buffer;
 import java.util.stream.Collectors;
 
 
-@CrossOrigin
+@CrossOrigin(
+        origins = "*",
+        allowedHeaders = "*",
+        methods = {RequestMethod.GET,RequestMethod.POST,RequestMethod.DELETE,RequestMethod.PUT}
+)
 @RestController
 @RequestMapping("/logs")
 public class LogController {
@@ -37,6 +41,7 @@ public class LogController {
     public static void log(String message) {
         logger.info(message);
     }
+
 
 
 
