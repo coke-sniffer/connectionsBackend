@@ -18,8 +18,7 @@ import java.util.concurrent.TimeUnit;
 import org.apache.logging.log4j.LogManager;
 
 @CrossOrigin(
-        allowCredentials = "true",
-        origins = {"https://blooooopybleep.github.io", "http://localhost:63342","https://play.william-duan.games"},
+        origins = {"https://blooooopybleep.github.io", "http://localhost","https://play.william-duan.games"},
         allowedHeaders = "*",
         methods = {RequestMethod.GET,RequestMethod.POST,RequestMethod.DELETE,RequestMethod.PUT}
 )

@@ -3,9 +3,7 @@ package org.wduan.connectionsbackend;
 
 import jakarta.servlet.http.HttpServletRequest;
 import org.apache.logging.log4j.LogManager;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import org.apache.logging.log4j.Logger;
 
@@ -13,8 +11,15 @@ import java.io.*;
 import java.nio.Buffer;
 import java.util.stream.Collectors;
 
+
+@CrossOrigin(
+        allowCredentials = "true",
+        origins = {"https://blooooopybleep.github.io", "http://localhost:63342","https://play.william-duan.games"},
+        allowedHeaders = "*",
+        methods = {RequestMethod.GET,RequestMethod.POST,RequestMethod.DELETE,RequestMethod.PUT}
+)
 @RestController
-@RequestMapping("/api/v1/logs")
+@RequestMapping("/logs")
 public class LogController {
 
     private static final Logger logger = LogManager.getLogger(LogController.class);
