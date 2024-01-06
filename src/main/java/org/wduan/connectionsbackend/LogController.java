@@ -31,7 +31,7 @@ public class LogController {
     public static void clearLog() {
         PrintWriter writer = null;
         try {
-            writer = new PrintWriter(new File("logs/log.log"));
+            writer = new PrintWriter("logs/log.log");
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
