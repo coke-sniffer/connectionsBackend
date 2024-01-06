@@ -15,7 +15,6 @@ import java.util.Calendar;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
-import org.apache.logging.log4j.LogManager;
 
 @CrossOrigin(
         allowCredentials = "true",
@@ -71,7 +70,7 @@ public class ConnectionsBackendApplication {
 
     @GetMapping("/dailypuzzle")
     public String getData(HttpServletRequest request) {
-        LogController.log("Data requested from ip: "+request.getRemoteAddr()+" @"+System.currentTimeMillis());
+        LogController.log("Data requested from ip: "+request.getRemoteAddr());
         return Arrays.toString(ConnectionsBackendApplication.data);
     }
 

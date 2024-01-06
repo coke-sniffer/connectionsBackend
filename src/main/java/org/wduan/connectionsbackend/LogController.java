@@ -39,10 +39,10 @@ public class LogController {
         writer.close();
     }
 
+
     public static void log(String message) {
         logger.info(message);
     }
-
 
 
 
