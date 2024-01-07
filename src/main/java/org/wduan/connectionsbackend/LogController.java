@@ -40,8 +40,8 @@ public class LogController {
     }
 
 
-    public static void log(String message) {
-        logger.info(message);
+    public static void log(Object message) {
+        logger.info(message.toString());
     }
 
 

@@ -28,7 +28,7 @@ public class ConnectionsBackendApplication {
     @PostConstruct
     public void setTime(){
         // Setting Spring Boot SetTimeZone
-        System.out.println(System.currentTimeMillis());
+        LogController.log(System.currentTimeMillis());
         TimeZone.setDefault(TimeZone.getTimeZone("EST"));
     }
     public static String[] data=new String[16];
@@ -49,14 +49,14 @@ public class ConnectionsBackendApplication {
         calendar.set(Calendar.MILLISECOND, 0);
 
         long delay = calendar.getTimeInMillis()-System.currentTimeMillis();
-        System.out.println(delay);
+        LogController.log(delay);
         if (delay < 0) {
             calendar.add(Calendar.DAY_OF_MONTH, 1);
             //add 18 million ms to compensate for GMT delay
             delay = calendar.getTimeInMillis() - System.currentTimeMillis();
         }
-        System.out.println(delay);
-        System.out.println("Timer scheduled for "+Date.from(Instant.ofEpochMilli(delay+System.currentTimeMillis())));
+        LogController.log(delay);
+        LogController.log("Timer scheduled for "+Date.from(Instant.ofEpochMilli(delay+System.currentTimeMillis())));
         new Timer().scheduleAtFixedRate(timerTask, delay, TimeUnit.MILLISECONDS.convert(1, TimeUnit.DAYS));
     }
 
