@@ -1,5 +1,6 @@
 package org.wduan.connectionsbackend;
 
+import jakarta.annotation.PostConstruct;
 import jakarta.servlet.http.HttpServletRequest;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
@@ -10,10 +11,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.time.Instant;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 @CrossOrigin(
@@ -43,13 +42,16 @@ public class ConnectionsBackendApplication {
         calendar.set(Calendar.MINUTE, 15);
         calendar.set(Calendar.SECOND, 0);
         calendar.set(Calendar.MILLISECOND, 0);
-        long delay = calendar.getTimeInMillis() - System.currentTimeMillis();
+
+        long delay = calendar.getTimeInMillis()-System.currentTimeMillis();
+        System.out.println(delay);
         if (delay < 0) {
             calendar.add(Calendar.DAY_OF_MONTH, 1);
             //add 18 million ms to compensate for GMT delay
-            delay = calendar.getTimeInMillis() - System.currentTimeMillis()
-                    + 18000000;
+            delay = calendar.getTimeInMillis() - System.currentTimeMillis();
         }
+        System.out.println(delay);
+        System.out.println("Timer scheduled for "+Date.from(Instant.ofEpochMilli(delay+System.currentTimeMillis())));
         new Timer().scheduleAtFixedRate(timerTask, delay, TimeUnit.MILLISECONDS.convert(1, TimeUnit.DAYS));
     }
 
