@@ -25,7 +25,12 @@ import java.util.concurrent.TimeUnit;
 @RequestMapping("/api/v1")
 @SpringBootApplication
 public class ConnectionsBackendApplication {
-
+    @PostConstruct
+    public void setTime(){
+        // Setting Spring Boot SetTimeZone
+        System.out.println(System.currentTimeMillis());
+        TimeZone.setDefault(TimeZone.getTimeZone("EST"));
+    }
     public static String[] data=new String[16];
     public static void main(String[] args) {
         LogController.clearLog();
