@@ -47,8 +47,8 @@ public class ConnectionsBackendApplication {
         if (delay < 0) {
             calendar.add(Calendar.DAY_OF_MONTH, 1);
             //add 18 million ms to compensate for GMT delay
-            delay = calendar.getTimeInMillis() - System.currentTimeMillis();
-                    //+ 18000000;
+            delay = calendar.getTimeInMillis() - System.currentTimeMillis()
+                    + 18000000;
         }
         new Timer().scheduleAtFixedRate(timerTask, delay, TimeUnit.MILLISECONDS.convert(1, TimeUnit.DAYS));
     }
