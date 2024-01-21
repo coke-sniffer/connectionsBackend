@@ -1,3 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="INFO">
 </Configuration>
+<RollingFile name="RollingFile" fileName="logs/log.log">
+   <PatternLayout>
+       <Pattern>%d [%t] %-5p %c{1}:%L - %m%n</Pattern>
+   </PatternLayout>
+   <DefaultRolloverStrategy max="1"/>
+</RollingFile>
